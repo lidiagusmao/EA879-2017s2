@@ -11,8 +11,8 @@ int yylex(void);
   char    strval[50];
   int     ival;
 }
-%token <strval> STRING
-%token <ival> VAR IGUAL EOL ASPA
+%token <strval> STRING STRINGX
+%token <ival> VAR IGUAL EOL ASPA OPE NUM
 %left SOMA
 
 %%
@@ -30,9 +30,24 @@ EXPRESSAO:
         salvar_imagem($1, &I);
         liberar_imagem(&I);
                           }
+    ;
+
+BRILHO: 
+    | STRING IGUAL STRING OPE NUM{
+        printf("Aplicando %s em %s\n", $5, $3);
+        brilho($3, $5, $4);
+        salvar_imagem($1, &I);
+        liberar_imagem(&I);
+                                 }  
 
     ;
 
+VALORMAXIMO:
+   | STRINGX{
+        printf("Achando o valor máximo de %s\n", $1);
+        busca($1);
+              } 
+   ;
 %%
 
 void yyerror(char *s) {
