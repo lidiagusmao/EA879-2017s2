@@ -23,29 +23,30 @@ PROGRAMA:
         ;
 
 EXPRESSAO:
-     STRING IGUAL STRING | {
+    STRING IGUAL STRING | {
         printf("Copiando %s para %s\n", $3, $1);
         imagem I = abrir_imagem($3);
         printf("Li imagem %d por %d\n", I.width, I.height);
         salvar_imagem($1, &I);
         liberar_imagem(&I);
-                          }
+                                }
     ;
 
 BRILHO: 
-     STRING IGUAL STRING OPE NUM | {
+    STRING IGUAL STRING OPE NUM | {
         printf("Aplicando %s em %s\n", $5, $3);
         brilho($3, $5, $4);
         salvar_imagem($1, &I);
         liberar_imagem(&I);
                                  }  
+
     ;
 
 VALORMAXIMO:
-     STRINGX | {
+   STRINGX | {
         printf("Achando o valor máximo de %s\n", $1);
         busca($1);
-              } 
+                                } 
    ;
 %%
 

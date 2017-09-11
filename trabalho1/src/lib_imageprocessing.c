@@ -93,8 +93,8 @@ void brilho (imagem *I, float intensidade, char ope){
    I.b = malloc(sizeof(float) * x * y);
 
    if(ope == '*'){
-	   for( j = 0, j < y, j++){
-	      for( i = 0, i < x, i++){
+	   for( j = 0; j < y; j++){
+	      for( i = 0; i < x; i++){
 		   I.r[i][j] = I.r[i][j] * intensidade;
 		   I.g[i][j] = I.g[i][j] * intensidade;
 		   I.b[i][j] = I.b[i][j] * intensidade;
@@ -103,8 +103,8 @@ void brilho (imagem *I, float intensidade, char ope){
    } 
 
    if(ope == '/'){
-	   for( j = 0, j < y, j++){
-	      for( i = 0, i < x, i++){
+	   for( j = 0; j < y; j++){
+	      for( i = 0; i < x; i++){
 		   I.r[i][j] = I.r[i][j] / intensidade;
 		   I.g[i][j] = I.g[i][j] / intensidade;
 		   I.b[i][j] = I.b[i][j] / intensidade;
@@ -124,8 +124,8 @@ void busca (imagem *I){
    I.g = malloc(sizeof(float) * x * y);
    I.b = malloc(sizeof(float) * x * y);
 
-   for( j = 0, j < y, j++){
-      for( i = 0, i < x, i++){
+   for( j = 0; j < y; j++){
+      for( i = 0; i < x; i++){
 	   soma = I.r[i][j] + I.g[i][j] + I.b[i][j];
 		if (soma > max){
 			max = soma;
